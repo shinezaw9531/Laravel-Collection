@@ -62,3 +62,61 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## ePetitions
+composer create-project laravel/laravel example-app
+ 
+cd example-app
+ 
+php artisan serve
+---------------------------------------
+////////////---------PHP artisan migrate error in Laravel 8, illuminate\Database\QueryException.----------//////////////
+AppServiceProvider.php
+Schema::defaultStringLength(191);
+/////////////////////////////
+-------------------------------------
+
+Laravel Database
+------------------------
+php artisan make:migration create_posts_table --create=posts
+php artisan migrate				// database create lote tar
+php artisan migrate:rollback    /// ko lote kae tae database ko rollback pyan lote tar
+php artisan migrate:rollback --step=2 // nouk sone ka nay two ku ko rollback lote hmar
+php artisan migrate:refresh		// shi tae database akone ko rollback lote pee migrate pyan lote tar
+php artisan migrate:fresh		//	drop all table and migrate all
+php artisan migrate:reset		// roll back all tables
+php artisan migrate:rollback --path=database/migrations/2022_04_10_054826_add_is_active_column_into_table.php  // custom rollback table
+
+php artisan migrate --path=/database/migrations/full_migration_file_name_migration.php
+
+--------------------------------------
+php artisan make:model Petition -mfs
+php artisan make:controller PetitionController --api --model=Petition
+php artisan make:resource PetitionResource
+php artisan make:resource PetitionCollection
+
+composer require doctrine/dbal
+php artisan make:migration change_category_type --table=petitions
+php artisan make:migration change_category_type_in_petitions
+php artisan migrate
+
+php artisan db:seed
+php artisan db:seed --class=PetitionSeeder
+
+php artisan route:list
+---------------------------------
+> php artisan make:model Author -mfs
+> php artisan make:controller AuthorController --api --model=Author
+> php artisan make:resource AuthorResource
+> php artisan make:resource AuthorCollection
+-----------------------------
+php artisan migrate
+php artisan db:seed --class=AuthorSeeder
+--------------------------------------------
+
+----------------------
+Clone And Run Any Laravel Project From GitHub
+> composer install
+> npm install
+> cp .env.example .env
+> php artisan key:generate
